@@ -28,9 +28,9 @@ app.post('/generate-tests', async (req, res) => {
     const tests = await generateTests(doc.text, plan);
 
     // Optionally save tests to local file
-    const outPath = await saveTestsToFile('test', tests);
+    // const outPath = await saveTestsToFile('test', tests);
 
-    res.json({ success: true, tests, outPath });
+    res.json({ success: true, tests });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: String(err) });
