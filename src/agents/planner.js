@@ -9,14 +9,13 @@ export async function planTests(analysis) {
 }
 
 async function callOpenAI(prompt) {
-  const url = 'https://api.openai.com/v1/chat/completions';
-  const body = {
-    model: 'gpt-4o-mini',
-    messages: [{ role: 'user', content: prompt }],
-    temperature: 0.0,
-    max_tokens: 500
+  const url = "http://localhost:11434/api/generate";
+   const body = {
+    model: "qwen:0.5b",
+    prompt,
+    stream: false, 
   };
-  const headers = { 'Content-Type': 'application/json', Authorization: `Bearer ${OPENAI}` };
+  const headers = { 'Content-Type': 'application/json' };
   const r = await axios.post(url, body, { headers });
-  return r.data.choices[0].message.content;
+  return   r.data.response;
 }
