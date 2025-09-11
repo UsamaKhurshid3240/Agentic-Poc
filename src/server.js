@@ -14,6 +14,7 @@ app.post('/generate-tests', async (req, res) => {
   try {
     const {  code } = req.body;
     if (!code) return res.status(400).json({ error: 'code required in body' });
+console.log(code);
 
     // Reader Agent
     const doc =  code ;
